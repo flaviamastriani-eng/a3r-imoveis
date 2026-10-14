@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800">
+<rect width="1200" height="800" fill="#CFE3EE"/>
+<rect y="560" width="1200" height="240" fill="#8DBB8A"/>
+<polygon points="430,420 600,280 770,420" fill="#1F2C4C"/><rect x="455" y="415" width="290" height="185" fill="#F3E9D6"/><rect x="575" y="490" width="50" height="110" fill="#C8892B"/><rect x="485" y="455" width="60" height="50" fill="#9FC3D9"/><rect x="655" y="455" width="60" height="50" fill="#9FC3D9"/>
+<rect x="0" y="0" width="1200" height="96" fill="#1F2C4C" opacity="0.88"/>
+<text x="600" y="62" text-anchor="middle" font-family="Arial, sans-serif" font-size="40" font-weight="700" fill="#FAF7F0" letter-spacing="6">FOTO DE EXEMPLO &#8211; TROCAR</text>
+<text x="600" y="740" text-anchor="middle" font-family="Arial, sans-serif" font-size="34" font-weight="700" fill="#1F2C4C">Fachada</text>
+</svg>

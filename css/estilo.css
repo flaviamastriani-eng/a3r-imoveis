@@ -1,0 +1,330 @@
+/* =====================================================================
+   A3R Imóveis — visual do site (cores da logo)
+   ===================================================================== */
+
+:root {
+  --creme: #FAF7F0;
+  --creme-escuro: #F1EADB;
+  --branco: #FFFFFF;
+  --marinho: #1F2C4C;
+  --marinho-claro: #2C3D66;
+  --ocre: #C8892B;
+  --ocre-claro: #F4E6CC;
+  --verde: #2A8063;
+  --verde-escuro: #1F684F;
+  --texto: #1F2C4C;
+  --texto-suave: #5A6378;
+  --linha: #E6DDCB;
+  --sombra: 0 1px 2px rgba(31, 44, 76, .06), 0 6px 20px rgba(31, 44, 76, .08);
+  --raio: 14px;
+  --largura: 1180px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+section[id], h2[id] { scroll-margin-top: 96px; }
+
+body {
+  margin: 0;
+  background: var(--creme);
+  color: var(--texto);
+  font-family: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+h1, h2, h3 { line-height: 1.2; margin: 0; letter-spacing: -.01em; }
+p { margin: 0 0 1em; }
+
+.icone {
+  width: 1.15em; height: 1.15em; flex: none;
+  fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round;
+}
+
+.conteudo { max-width: var(--largura); margin: 0 auto; padding: 0 16px; }
+
+/* ---------- Topo ---------- */
+
+.topo {
+  position: sticky; top: 0; z-index: 20;
+  background: rgba(250, 247, 240, .96);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--linha);
+}
+.topo-in {
+  max-width: var(--largura); margin: 0 auto; padding: 10px 16px 0;
+  display: flex; flex-direction: column; gap: 6px;
+}
+.marca img { height: 46px; width: auto; }
+.menu {
+  display: flex; gap: 0; overflow-x: auto; scrollbar-width: none;
+  margin: 0 -16px; padding: 0 8px;
+}
+.menu::-webkit-scrollbar { display: none; }
+.menu a {
+  flex: none; padding: 10px 7px; text-decoration: none; font-weight: 600; font-size: 14px;
+  color: var(--texto-suave); border-bottom: 3px solid transparent;
+}
+.menu a:hover { color: var(--marinho); }
+.menu a.ativo { color: var(--marinho); border-bottom-color: var(--ocre); }
+
+@media (min-width: 760px) {
+  .topo-in { flex-direction: row; align-items: center; justify-content: space-between; padding: 12px 16px; }
+  .marca img { height: 56px; }
+  .menu { margin: 0; padding: 0; }
+  .menu a { border-bottom: 0; border-radius: 999px; padding: 8px 16px; }
+  .menu a.ativo { background: var(--ocre-claro); }
+}
+
+/* ---------- Botões ---------- */
+
+.botao {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  min-height: 50px; padding: 12px 22px; border-radius: 999px; border: 2px solid transparent;
+  font: inherit; font-weight: 700; font-size: 16px; text-decoration: none; cursor: pointer;
+  background: var(--marinho); color: var(--branco);
+  transition: background .15s, transform .15s;
+}
+.botao:hover { background: var(--marinho-claro); }
+.botao:active { transform: scale(.98); }
+.botao-whats { background: var(--verde); }
+.botao-whats:hover { background: var(--verde-escuro); }
+.botao-contorno { background: transparent; color: var(--marinho); border-color: var(--marinho); }
+.botao-contorno:hover { background: var(--marinho); color: var(--branco); }
+.botao .icone { width: 22px; height: 22px; }
+
+/* ---------- Página inicial ---------- */
+
+.hero {
+  background:
+    radial-gradient(circle at 92% 10%, rgba(200, 137, 43, .22), transparent 40%),
+    radial-gradient(circle at 0% 100%, rgba(42, 128, 99, .14), transparent 45%),
+    var(--creme);
+  padding: 44px 0 52px;
+}
+.hero-in { max-width: var(--largura); margin: 0 auto; padding: 0 16px; }
+.sobretitulo {
+  color: var(--verde); font-weight: 700; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; margin-bottom: 10px;
+}
+.hero h1 { font-size: clamp(32px, 8vw, 60px); font-weight: 800; max-width: 14em; }
+.hero-texto { font-size: clamp(17px, 2.4vw, 20px); color: var(--texto-suave); max-width: 34em; margin: 18px 0 28px; }
+.hero-acoes { display: flex; flex-wrap: wrap; gap: 12px; }
+@media (max-width: 480px) { .hero-acoes .botao { flex: 1 1 100%; } }
+
+.secao { padding: 44px 0; }
+.secao-clara { background: var(--creme-escuro); }
+.titulo-secao { font-size: clamp(24px, 4.5vw, 32px); font-weight: 800; margin-bottom: 22px; }
+.titulo-pagina { font-size: clamp(28px, 6vw, 40px); font-weight: 800; }
+.lista-qtd { color: var(--texto-suave); margin: 6px 0 24px; min-height: 1.6em; }
+
+.categorias { display: grid; gap: 12px; }
+@media (min-width: 700px) { .categorias { grid-template-columns: repeat(3, 1fr); gap: 18px; } }
+.categoria {
+  position: relative; display: flex; flex-direction: column; justify-content: flex-end;
+  min-height: 108px; padding: 20px 22px; border-radius: var(--raio);
+  text-decoration: none; color: var(--branco); overflow: hidden;
+  box-shadow: var(--sombra); transition: transform .15s;
+}
+.categoria:hover { transform: translateY(-3px); }
+.categoria-casa { background: var(--marinho); }
+.categoria-apartamento { background: var(--verde); }
+.categoria-terreno { background: var(--ocre); }
+.categoria-nome { font-size: 24px; font-weight: 800; }
+.categoria-qtd { opacity: .9; font-size: 15px; }
+.categoria .icone {
+  position: absolute; right: 18px; top: 50%; transform: translateY(-50%);
+  width: 34px; height: 34px; padding: 6px; border-radius: 50%; background: rgba(255, 255, 255, .18);
+}
+@media (min-width: 700px) { .categoria { min-height: 150px; } }
+
+.quem-somos { display: grid; gap: 24px; align-items: center; }
+.quem-somos-simbolo { width: 120px; border-radius: 24px; }
+#quem-somos-texto { color: var(--texto-suave); font-size: 17px; max-width: 40em; margin-bottom: 24px; }
+@media (min-width: 760px) {
+  .quem-somos { grid-template-columns: 260px 1fr; gap: 56px; }
+  .quem-somos-simbolo { width: 260px; }
+}
+
+/* ---------- Cartões de imóvel ---------- */
+
+.grade { display: grid; gap: 18px; grid-template-columns: 1fr; }
+@media (min-width: 620px) { .grade { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 980px) { .grade { grid-template-columns: repeat(3, 1fr); gap: 24px; } }
+
+.cartao {
+  display: flex; flex-direction: column; background: var(--branco); border-radius: var(--raio);
+  overflow: hidden; text-decoration: none; box-shadow: var(--sombra); transition: transform .15s, box-shadow .15s;
+}
+.cartao:hover { transform: translateY(-3px); box-shadow: 0 2px 4px rgba(31, 44, 76, .08), 0 14px 32px rgba(31, 44, 76, .12); }
+.cartao-foto { position: relative; aspect-ratio: 3 / 2; background: var(--creme-escuro); }
+.cartao-foto img { width: 100%; height: 100%; object-fit: cover; }
+.selo {
+  position: absolute; left: 12px; top: 12px; padding: 4px 12px; border-radius: 999px;
+  background: var(--marinho); color: var(--branco); font-size: 13px; font-weight: 700;
+}
+.selo-claro { position: static; display: inline-block; background: var(--ocre-claro); color: var(--marinho); }
+.cartao-corpo { padding: 16px 18px 20px; display: flex; flex-direction: column; flex: 1; }
+.cartao-bairro { display: flex; align-items: center; gap: 4px; color: var(--verde); font-weight: 600; font-size: 14px; margin-bottom: 4px; }
+.cartao h3 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+.cartao-resumo { color: var(--texto-suave); font-size: 14px; margin-bottom: 12px; }
+.cartao-preco { margin: auto 0 0; font-size: 22px; font-weight: 800; color: var(--marinho); }
+
+.sem-foto {
+  display: grid; place-items: center; width: 100%; height: 100%; min-height: 100%;
+  color: var(--texto-suave); font-weight: 600; background: var(--creme-escuro);
+}
+.sem-foto-grande { aspect-ratio: 3 / 2; border-radius: var(--raio); }
+
+.vazio, .carregando {
+  padding: 28px; border-radius: var(--raio); background: var(--branco); color: var(--texto-suave);
+  text-align: center; box-shadow: var(--sombra);
+}
+.carregando { box-shadow: none; background: transparent; }
+
+/* ---------- Página do anúncio ---------- */
+
+.secao-anuncio { padding-top: 16px; padding-bottom: 110px; }
+@media (min-width: 900px) { .secao-anuncio { padding-bottom: 60px; } }
+
+.trilha { display: flex; align-items: center; gap: 4px; font-size: 14px; color: var(--texto-suave); margin-bottom: 14px; flex-wrap: wrap; }
+.trilha a { text-decoration: none; font-weight: 600; }
+.trilha a:hover { text-decoration: underline; }
+.trilha .icone { width: 14px; height: 14px; }
+
+.anuncio-grade { display: grid; gap: 22px; }
+@media (min-width: 900px) {
+  .anuncio-grade { grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 40px; align-items: start; }
+  .anuncio-info { position: sticky; top: 104px; }
+}
+.anuncio-fotos { min-width: 0; margin: 0 -16px; }
+@media (min-width: 620px) { .anuncio-fotos { margin: 0; } }
+
+.galeria { position: relative; }
+.galeria-trilho {
+  display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none;
+  aspect-ratio: 3 / 2; background: var(--creme-escuro);
+}
+@media (min-width: 620px) { .galeria-trilho { border-radius: var(--raio); } }
+.galeria-trilho::-webkit-scrollbar { display: none; }
+.galeria-item { flex: 0 0 100%; scroll-snap-align: start; padding: 0; border: 0; background: none; cursor: zoom-in; }
+.galeria-item img { width: 100%; height: 100%; object-fit: cover; }
+.galeria-seta, .tela-cheia button {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; border: 0;
+  background: rgba(255, 255, 255, .92); color: var(--marinho); cursor: pointer; box-shadow: var(--sombra);
+}
+.galeria-seta .icone, .tela-cheia .icone { width: 22px; height: 22px; stroke-width: 2.4; }
+.galeria-anterior { left: 12px; }
+.galeria-proxima { right: 12px; }
+.galeria-contador {
+  position: absolute; right: 12px; bottom: 12px; padding: 3px 10px; border-radius: 999px;
+  background: rgba(31, 44, 76, .8); color: var(--branco); font-size: 13px; font-weight: 600;
+}
+.miniaturas { display: flex; gap: 8px; margin-top: 10px; overflow-x: auto; padding: 2px 16px; }
+@media (min-width: 620px) { .miniaturas { padding: 2px 0; } }
+.miniaturas button {
+  flex: none; width: 84px; aspect-ratio: 3 / 2; padding: 0; border: 3px solid transparent; border-radius: 10px;
+  overflow: hidden; cursor: pointer; background: none; opacity: .65;
+}
+.miniaturas button.ativa { border-color: var(--ocre); opacity: 1; }
+.miniaturas img { width: 100%; height: 100%; object-fit: cover; }
+
+.anuncio-info h1 { font-size: clamp(26px, 5vw, 34px); font-weight: 800; margin: 12px 0 8px; }
+.anuncio-local { display: flex; align-items: center; gap: 6px; color: var(--texto-suave); margin-bottom: 14px; }
+.anuncio-preco { font-size: clamp(30px, 6vw, 38px); font-weight: 800; color: var(--marinho); margin-bottom: 18px; }
+
+.caracteristicas {
+  list-style: none; margin: 0 0 22px; padding: 0;
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 10px;
+}
+.caracteristicas li {
+  display: grid; grid-template-columns: auto 1fr; column-gap: 10px; align-items: center;
+  padding: 12px 14px; background: var(--branco); border-radius: 12px; border: 1px solid var(--linha);
+}
+.caracteristicas .icone { grid-row: span 2; width: 26px; height: 26px; color: var(--ocre); }
+.caracteristicas strong { font-size: 18px; line-height: 1.2; }
+.caracteristicas span { font-size: 13px; color: var(--texto-suave); }
+
+.anuncio-acoes { display: flex; flex-wrap: wrap; gap: 10px; }
+.anuncio-acoes .botao { flex: 1 1 220px; }
+
+.anuncio-descricao {
+  margin-top: 32px; padding: 24px; background: var(--branco); border-radius: var(--raio); border: 1px solid var(--linha);
+  max-width: 760px; font-size: 17px;
+}
+.anuncio-descricao h2, .parecidos h2 { font-size: 22px; font-weight: 800; margin-bottom: 14px; }
+.anuncio-descricao p:last-child { margin-bottom: 0; }
+.parecidos { margin-top: 44px; }
+
+.indisponivel { text-align: center; padding: 60px 0; }
+.indisponivel h1 { font-size: 30px; margin-bottom: 10px; }
+.indisponivel p { color: var(--texto-suave); }
+
+/* Barra fixa no celular, com preço e WhatsApp */
+.barra-fixa {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 30;
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
+  background: var(--branco); border-top: 1px solid var(--linha); box-shadow: 0 -6px 20px rgba(31, 44, 76, .1);
+}
+.barra-fixa span { display: block; font-size: 12px; color: var(--texto-suave); }
+.barra-fixa strong { font-size: 20px; font-weight: 800; }
+.barra-fixa .botao { min-height: 46px; padding: 10px 18px; }
+@media (min-width: 900px) { .barra-fixa { display: none; } }
+body[data-pagina="imovel"] .whats-flutuante { display: none; }
+@media (min-width: 900px) { body[data-pagina="imovel"] .whats-flutuante { display: inline-flex; } }
+
+/* Fotos em tela cheia */
+.tela-cheia {
+  width: 100vw; height: 100dvh; max-width: none; max-height: none; margin: 0; padding: 0; border: 0;
+  background: rgba(12, 18, 33, .96);
+}
+.tela-cheia::backdrop { background: rgba(12, 18, 33, .96); }
+.tela-trilho { display: flex; height: 100%; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
+.tela-trilho::-webkit-scrollbar { display: none; }
+.tela-item { flex: 0 0 100%; scroll-snap-align: start; display: grid; place-items: center; padding: 60px 8px; }
+.tela-item img { max-width: 100%; max-height: 100%; object-fit: contain; }
+.tela-cheia .tela-fechar { top: 16px; right: 16px; transform: none; }
+.tela-cheia .tela-anterior { left: 12px; }
+.tela-cheia .tela-proxima { right: 12px; }
+.tela-cheia.uma-foto .tela-anterior, .tela-cheia.uma-foto .tela-proxima { display: none; }
+
+/* ---------- Rodapé ---------- */
+
+.rodape { background: var(--marinho); color: #DCE1EC; padding: 40px 0 24px; }
+.rodape-in {
+  max-width: var(--largura); margin: 0 auto; padding: 0 16px;
+  display: grid; gap: 28px;
+}
+@media (min-width: 760px) { .rodape-in { grid-template-columns: 200px 1fr 1fr; gap: 48px; align-items: start; } }
+.rodape-logo { width: 150px; border-radius: 16px; }
+.rodape h2 { color: var(--branco); font-size: 16px; margin-bottom: 12px; }
+.rodape-contatos, .rodape-menu { display: flex; flex-direction: column; gap: 10px; }
+.rodape a { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; }
+.rodape a:hover { color: var(--branco); text-decoration: underline; }
+.rodape-final {
+  max-width: var(--largura); margin: 32px auto 0; padding: 18px 16px 0; border-top: 1px solid rgba(255, 255, 255, .15);
+  font-size: 13px; color: #AEB6C8;
+}
+body:not([data-pagina="imovel"]) .rodape { padding-bottom: 90px; }
+@media (min-width: 760px) { body .rodape { padding-bottom: 24px; } }
+
+/* ---------- Botão flutuante do WhatsApp ---------- */
+
+.whats-flutuante {
+  position: fixed; right: 16px; bottom: calc(16px + env(safe-area-inset-bottom)); z-index: 25;
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px; border-radius: 999px; background: var(--verde); color: var(--branco);
+  text-decoration: none; font-weight: 700; box-shadow: 0 6px 22px rgba(31, 104, 79, .45);
+  transition: background .15s, transform .15s;
+}
+.whats-flutuante:hover { background: var(--verde-escuro); transform: translateY(-2px); }
+.whats-flutuante .icone { width: 30px; height: 30px; }
+.whats-flutuante span { display: none; }
+@media (min-width: 760px) { .whats-flutuante { padding: 12px 20px 12px 14px; } .whats-flutuante span { display: inline; } }
+
+:focus-visible { outline: 3px solid var(--ocre); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
