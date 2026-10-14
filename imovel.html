@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Imóvel | A3R Imóveis</title>
+  <meta name="description" content="Imóvel à venda em Barretos com a A3R Imóveis.">
+  <meta property="og:title" content="Imóvel à venda | A3R Imóveis">
+  <meta property="og:image" content="imagens/logo-horizontal.png">
+  <meta name="theme-color" content="#1F2C4C">
+  <link rel="icon" href="imagens/icone-32.png" sizes="32x32">
+  <link rel="apple-touch-icon" href="imagens/icone-180.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/estilo.css">
+  <script src="js/site.js" defer></script>
+</head>
+<body data-pagina="imovel">
+  <header class="topo">
+    <div class="topo-in">
+      <a class="marca" href="index.html"><img src="imagens/logo-topo.png" alt="A3R Imóveis"></a>
+      <nav class="menu" aria-label="Menu principal">
+        <a href="casas.html">Casas</a>
+        <a href="apartamentos.html">Apartamentos</a>
+        <a href="terrenos.html">Terrenos</a>
+        <a href="index.html#quem-somos">Quem somos</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="secao secao-anuncio">
+    <div class="conteudo" id="anuncio"><p class="carregando">Carregando imóvel…</p></div>
+  </main>
+
+  <dialog class="tela-cheia" id="tela-cheia" aria-label="Fotos em tela cheia">
+    <div class="tela-trilho"></div>
+    <button class="tela-fechar" aria-label="Fechar"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    <button class="tela-anterior" aria-label="Foto anterior"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg></button>
+    <button class="tela-proxima" aria-label="Próxima foto"><svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button>
+  </dialog>
+
+  <footer class="rodape" id="rodape"></footer>
+  <a class="whats-flutuante" id="whats-flutuante" href="#" target="_blank" rel="noopener" aria-label="Fale no WhatsApp"></a>
+</body>
+</html>

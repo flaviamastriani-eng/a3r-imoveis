@@ -1,0 +1,125 @@
+# Configuração do painel de edição (Pages CMS — https://app.pagescms.org)
+# Define os formulários que aparecem no painel. Não precisa mexer aqui.
+
+media:
+  input: imagens/anuncios
+  output: /imagens/anuncios
+  extensions: [jpg, jpeg, png, webp]
+
+content:
+  - name: anuncios
+    label: Anúncios
+    type: file
+    path: dados/imoveis.json
+    format: json
+    list: true
+    fields:
+      - name: titulo
+        label: Título do anúncio
+        type: string
+        required: true
+        description: "Ex.: Casa com 3 quartos no Jardim América"
+      - name: tipo
+        label: Tipo
+        type: select
+        required: true
+        options:
+          values: [Casa, Apartamento, Terreno]
+      - name: situacao
+        label: Situação
+        type: select
+        default: À venda
+        description: "Quando vender, escolha Vendido: o anúncio some do site (mas fica guardado aqui)."
+        options:
+          values: [À venda, Vendido]
+      - name: destaque
+        label: Mostrar em destaque na página inicial
+        type: boolean
+        default: false
+      - name: preco
+        label: Preço (só números, sem pontos. Ex.: 350000)
+        type: number
+        description: "Deixe 0 para mostrar 'Consulte'."
+      - name: bairro
+        label: Bairro
+        type: string
+      - name: cidade
+        label: Cidade
+        type: string
+        default: Barretos - SP
+      - name: metragem
+        label: Metragem (m²)
+        type: number
+      - name: quartos
+        label: Quartos (casas e apartamentos)
+        type: number
+        default: 0
+      - name: banheiros
+        label: Banheiros (casas e apartamentos)
+        type: number
+        default: 0
+      - name: vagas
+        label: Vagas de garagem (casas e apartamentos)
+        type: number
+        default: 0
+      - name: frente
+        label: Frente em metros (terrenos)
+        type: number
+        default: 0
+      - name: fundo
+        label: Fundo em metros (terrenos)
+        type: number
+        default: 0
+      - name: descricao
+        label: Descrição
+        type: text
+        description: "Deixe uma linha em branco para começar um novo parágrafo."
+      - name: fotos
+        label: Fotos (a primeira é a capa do anúncio)
+        type: image
+        options:
+          multiple:
+            max: 30
+          extensions: [jpg, jpeg, png, webp]
+          rename: true
+
+  - name: site
+    label: Textos do site e contatos
+    type: file
+    path: dados/site.json
+    format: json
+    fields:
+      - name: titulo_inicio
+        label: Frase principal da página inicial
+        type: string
+      - name: texto_inicio
+        label: Texto abaixo da frase principal
+        type: text
+      - name: quem_somos_titulo
+        label: Título do "Quem somos"
+        type: string
+      - name: quem_somos
+        label: Texto do "Quem somos"
+        type: text
+        description: "Deixe uma linha em branco para começar um novo parágrafo."
+      - name: whatsapp
+        label: Número do WhatsApp
+        type: string
+        description: "Com DDD. Ex.: (17) 98802-9425"
+      - name: mensagem_whatsapp
+        label: Mensagem pronta do WhatsApp (botões gerais)
+        type: string
+      - name: creci
+        label: CRECI
+        type: string
+      - name: cidade
+        label: Cidade (aparece no rodapé)
+        type: string
+      - name: instagram
+        label: Instagram
+        type: string
+        description: "Só o nome do perfil, ex.: a3rimoveis. Deixe vazio para não aparecer."
+      - name: email
+        label: E-mail
+        type: string
+        description: "Deixe vazio para não aparecer."
