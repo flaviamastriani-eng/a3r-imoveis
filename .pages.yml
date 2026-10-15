@@ -37,7 +37,7 @@ content:
         type: boolean
         default: false
       - name: preco
-        label: Preço (só números, sem pontos. Ex.: 350000)
+        label: Preço
         type: number
         description: "Deixe 0 para mostrar 'Consulte'."
       - name: bairro
