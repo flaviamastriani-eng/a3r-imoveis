@@ -4,7 +4,7 @@
     "tipo": "Casa",
     "situacao": "À venda",
     "destaque": true,
-    "preco": 680000,
+    "preco": 690000,
     "bairro": "Jardim América",
     "cidade": "Barretos - SP",
     "metragem": 220,
@@ -14,7 +14,11 @@
     "frente": 0,
     "fundo": 0,
     "descricao": "TEXTO DE EXEMPLO – TROCAR. Casa espaçosa, com sala ampla, cozinha planejada e uma suíte. Área de lazer com piscina e churrasqueira, ótima para reunir a família.\n\nRua tranquila, perto de escola, padaria e supermercado.",
-    "fotos": ["imagens/exemplos/casa-1.svg", "imagens/exemplos/casa-2.svg", "imagens/exemplos/casa-3.svg"]
+    "fotos": [
+      "imagens/exemplos/casa-1.svg",
+      "imagens/exemplos/casa-2.svg",
+      "imagens/exemplos/casa-3.svg"
+    ]
   },
   {
     "titulo": "Casa térrea com quintal amplo",
@@ -31,7 +35,11 @@
     "frente": 0,
     "fundo": 0,
     "descricao": "TEXTO DE EXEMPLO – TROCAR. Casa térrea bem cuidada, com quintal grande nos fundos e garagem coberta para dois carros.\n\nAceita financiamento.",
-    "fotos": ["imagens/exemplos/casa-2.svg", "imagens/exemplos/casa-1.svg", "imagens/exemplos/casa-3.svg"]
+    "fotos": [
+      "imagens/exemplos/casa-2.svg",
+      "imagens/exemplos/casa-1.svg",
+      "imagens/exemplos/casa-3.svg"
+    ]
   },
   {
     "titulo": "Apartamento 2 quartos perto do Centro",
@@ -48,7 +56,11 @@
     "frente": 0,
     "fundo": 0,
     "descricao": "TEXTO DE EXEMPLO – TROCAR. Apartamento claro e arejado, a poucos minutos do comércio do Centro. Prédio com portaria e elevador.",
-    "fotos": ["imagens/exemplos/apartamento-1.svg", "imagens/exemplos/apartamento-2.svg", "imagens/exemplos/apartamento-3.svg"]
+    "fotos": [
+      "imagens/exemplos/apartamento-1.svg",
+      "imagens/exemplos/apartamento-2.svg",
+      "imagens/exemplos/apartamento-3.svg"
+    ]
   },
   {
     "titulo": "Apartamento com sacada e lazer completo",
@@ -65,7 +77,11 @@
     "frente": 0,
     "fundo": 0,
     "descricao": "TEXTO DE EXEMPLO – TROCAR. Apartamento com sacada, três quartos (um deles suíte) e condomínio com piscina, salão de festas e playground.",
-    "fotos": ["imagens/exemplos/apartamento-2.svg", "imagens/exemplos/apartamento-1.svg", "imagens/exemplos/apartamento-3.svg"]
+    "fotos": [
+      "imagens/exemplos/apartamento-2.svg",
+      "imagens/exemplos/apartamento-1.svg",
+      "imagens/exemplos/apartamento-3.svg"
+    ]
   },
   {
     "titulo": "Terreno plano em bairro residencial",
@@ -82,7 +98,10 @@
     "frente": 10,
     "fundo": 30,
     "descricao": "TEXTO DE EXEMPLO – TROCAR. Terreno plano, pronto para construir, em rua asfaltada com água, luz e esgoto.",
-    "fotos": ["imagens/exemplos/terreno-1.svg", "imagens/exemplos/terreno-2.svg"]
+    "fotos": [
+      "imagens/exemplos/terreno-1.svg",
+      "imagens/exemplos/terreno-2.svg"
+    ]
   },
   {
     "titulo": "Terreno de esquina",
@@ -99,6 +118,9 @@
     "frente": 12,
     "fundo": 30,
     "descricao": "TEXTO DE EXEMPLO – TROCAR. Terreno de esquina, bom para casa ou pequeno comércio.",
-    "fotos": ["imagens/exemplos/terreno-2.svg", "imagens/exemplos/terreno-1.svg"]
+    "fotos": [
+      "imagens/exemplos/terreno-2.svg",
+      "imagens/exemplos/terreno-1.svg"
+    ]
   }
 ]
