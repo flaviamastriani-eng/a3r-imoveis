@@ -4,10 +4,10 @@
     "tipo": "Apartamento",
     "situacao": "À venda",
     "destaque": true,
-    "preco": 690000,
+    "preco": 23000000,
     "bairro": "Pereira",
     "cidade": "Barretos - SP",
-    "metragem": 220,
+    "metragem": 73,
     "quartos": 3,
     "banheiros": 1,
     "vagas": 1,
@@ -15,14 +15,19 @@
     "fundo": 0,
     "descricao": "Apartamento amplo e bem iluminado no Condomínio Ipanema, no bairro Pereira, a menos de 1 km do Barretos Shopping. Comércio, serviços e tudo o que você precisa por perto.\n\nSão 3 quartos, um deles com guarda-roupa planejado. A sala é ampla, com balcão em granito e iluminação em LED, e se abre para a sacada, que deixa o ambiente bem claro. A cozinha é conjugada, com bancada em granito, e a área de serviço é separada.\n\nO banheiro tem box de vidro e gabinete em granito. Piso cerâmico em todo o apartamento e pintura nova: pronto para morar.\n\nAgende sua visita!",
     "fotos": [
-      "imagens/exemplos/casa-1.svg",
-      "imagens/exemplos/casa-2.svg",
-      "imagens/exemplos/casa-3.svg"
+      "/imagens/anuncios/whatsapp-image-2026-10-19-at-150102-3.jpeg",
+      "/imagens/anuncios/whatsapp-image-2026-10-19-at-150102-1.jpeg",
+      "/imagens/anuncios/whatsapp-image-2026-10-19-at-150102-2.jpeg",
+      "/imagens/anuncios/whatsapp-image-2026-10-19-at-150102.jpeg",
+      "/imagens/anuncios/whatsapp-image-2026-10-19-at-150102-7.jpeg",
+      "/imagens/anuncios/whatsapp-image-2026-10-19-at-150102-4.jpeg",
+      "/imagens/anuncios/whatsapp-image-2026-10-19-at-150102-6.jpeg",
+      "/imagens/anuncios/whatsapp-image-2026-10-19-at-150537.jpeg"
     ]
   },
   {
-    "titulo": "Casa térrea com quintal amplo",
-    "tipo": "Casa",
+    "titulo": "casa",
+    "tipo": "Apartamento",
     "situacao": "À venda",
     "destaque": false,
     "preco": 390000,
