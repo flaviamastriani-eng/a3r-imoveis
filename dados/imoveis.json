@@ -1,6 +1,7 @@
 [
   {
     "titulo": "Apartamento 3 quartos no Condomínio Ipanema",
+    "codigo": "012",
     "tipo": "Apartamento",
     "situacao": "À venda",
     "destaque": true,
@@ -8,11 +9,17 @@
     "bairro": "Pereira",
     "cidade": "Barretos - SP",
     "metragem": 73,
+    "area_terreno": 0,
     "quartos": 3,
+    "suites": 0,
     "banheiros": 1,
     "vagas": 1,
     "frente": 0,
     "fundo": 0,
+    "condominio": 380,
+    "iptu": 0,
+    "financiamento": true,
+    "fgts": true,
     "descricao": "Apartamento amplo e bem iluminado no Condomínio Ipanema, no bairro Pereira, a menos de 1 km do Barretos Shopping. Comércio, serviços e tudo o que você precisa por perto.\n\nSão 3 quartos, um deles com guarda-roupa planejado. A sala é ampla, com balcão em granito e iluminação em LED, e se abre para a sacada, que deixa o ambiente bem claro. A cozinha é conjugada, com bancada em granito, e a área de serviço é separada.\n\nO banheiro tem box de vidro e gabinete em granito. Piso cerâmico em todo o apartamento e pintura nova: pronto para morar.\n\nAgende sua visita!",
     "fotos": [
       "/imagens/anuncios/whatsapp-image-2026-10-19-at-151143.jpeg",
