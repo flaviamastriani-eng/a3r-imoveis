@@ -19,6 +19,10 @@ content:
         type: string
         required: true
         description: "Ex.: Casa com 3 quartos no Jardim América"
+      - name: codigo
+        label: Código de referência
+        type: string
+        description: "Ex. 012. Aparece como Ref. 012 no site e na mensagem do WhatsApp."
       - name: tipo
         label: Tipo
         type: select
@@ -39,7 +43,7 @@ content:
       - name: preco
         label: Preço
         type: number
-        description: "Deixe 0 para mostrar 'Consulte'."
+        description: "Só números, sem pontos e sem R$ (ex. 350000). Deixe 0 para mostrar 'Consulte'."
       - name: bairro
         label: Bairro
         type: string
@@ -50,8 +54,17 @@ content:
       - name: metragem
         label: Metragem (m²)
         type: number
+        description: "Para casas, a área construída. Para apartamentos, a área útil. Para terrenos, a área total."
+      - name: area_terreno
+        label: Área do terreno em m² (casas)
+        type: number
+        default: 0
       - name: quartos
         label: Quartos (casas e apartamentos)
+        type: number
+        default: 0
+      - name: suites
+        label: Quantos desses quartos são suítes
         type: number
         default: 0
       - name: banheiros
@@ -70,6 +83,24 @@ content:
         label: Fundo em metros (terrenos)
         type: number
         default: 0
+      - name: condominio
+        label: Valor do condomínio por mês
+        type: number
+        default: 0
+        description: "Só números (ex. 350). Deixe 0 se não tiver."
+      - name: iptu
+        label: Valor do IPTU por ano
+        type: number
+        default: 0
+        description: "Só números (ex. 1200). Deixe 0 para não mostrar."
+      - name: financiamento
+        label: Aceita financiamento
+        type: boolean
+        default: false
+      - name: fgts
+        label: Aceita FGTS
+        type: boolean
+        default: false
       - name: descricao
         label: Descrição
         type: text
@@ -95,6 +126,13 @@ content:
       - name: texto_inicio
         label: Texto abaixo da frase principal
         type: text
+      - name: foto_topo
+        label: Foto do topo da página inicial
+        type: image
+        description: "De preferência uma foto deitada (horizontal). Se ficar vazio, o site usa a capa do primeiro imóvel em destaque."
+        options:
+          extensions: [jpg, jpeg, png, webp]
+          rename: true
       - name: quem_somos_titulo
         label: Título do "Quem somos"
         type: string
@@ -102,6 +140,12 @@ content:
         label: Texto do "Quem somos"
         type: text
         description: "Deixe uma linha em branco para começar um novo parágrafo."
+      - name: vender_titulo
+        label: Título da seção "Quer vender seu imóvel?"
+        type: string
+      - name: vender_texto
+        label: Texto da seção "Quer vender seu imóvel?"
+        type: text
       - name: whatsapp
         label: Número do WhatsApp
         type: string
