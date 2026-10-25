@@ -7,21 +7,23 @@
   <meta name="description" content="Casas, apartamentos e terrenos à venda em Barretos e região. Fale direto com um corretor pelo WhatsApp.">
   <meta property="og:title" content="A3R Imóveis | Barretos - SP">
   <meta property="og:description" content="Casas, apartamentos e terrenos à venda em Barretos e região.">
-  <meta property="og:image" content="https://a3rimoveis.com.br/imagens/logo-horizontal.png">
+  <meta property="og:image" content="https://a3rimoveis.com.br/imagens/logo-nova/compartilhar.png">
   <meta property="og:type" content="website">
   <meta name="theme-color" content="#1F2C4C">
-  <link rel="icon" href="imagens/icone-32.png" sizes="32x32">
-  <link rel="apple-touch-icon" href="imagens/icone-180.png">
+  <link rel="icon" href="imagens/logo-nova/simbolo.svg" type="image/svg+xml">
+  <link rel="icon" href="imagens/logo-nova/icone-32.png" sizes="32x32">
+  <link rel="apple-touch-icon" href="imagens/logo-nova/icone-180.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/estilo.css">
   <script src="js/site.js" defer></script>
 </head>
 <body data-pagina="inicio">
+  <div class="faixa" id="faixa"></div>
   <header class="topo">
     <div class="topo-in">
-      <a class="marca" href="index.html"><img src="imagens/logo-topo.png" alt="A3R Imóveis"></a>
+      <a class="marca" href="index.html"><img src="imagens/logo-nova/logo-horizontal.svg" alt="A3R Imóveis"></a>
       <nav class="menu" aria-label="Menu principal">
         <a href="casas.html">Casas</a>
         <a href="apartamentos.html">Apartamentos</a>
@@ -32,44 +34,48 @@
   </header>
 
   <main>
-    <section class="hero">
-      <div class="hero-in">
-        <p class="sobretitulo">Barretos e região</p>
+    <section class="abertura">
+      <div class="abertura-foto" id="abertura-foto"></div>
+      <div class="conteudo abertura-in">
         <h1 id="hero-titulo">&nbsp;</h1>
-        <p id="hero-texto" class="hero-texto"></p>
-        <div class="hero-acoes">
-          <a class="botao botao-whats" id="hero-whats" href="#" target="_blank" rel="noopener">
-            <svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 20.5 5 16a8.5 8.5 0 1 1 3 3z"/><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5l1-1.5-2-1-1 1c-1-.5-2-1.5-2.5-2.5l1-1-1-2z"/></svg>
-            Fale com a gente
-          </a>
-          <a class="botao botao-contorno" href="#destaques-titulo">Ver imóveis</a>
+        <p id="hero-texto" class="abertura-texto"></p>
+        <div class="abertura-acoes">
+          <a class="botao botao-destaque" href="#destaques-titulo">Ver imóveis à venda</a>
         </div>
       </div>
     </section>
 
     <section class="secao">
       <div class="conteudo">
-        <h2 class="titulo-secao">O que você procura?</h2>
-        <div class="categorias" id="categorias"></div>
-      </div>
-    </section>
-
-    <section class="secao secao-clara">
-      <div class="conteudo">
-        <h2 class="titulo-secao" id="destaques-titulo">Imóveis em destaque</h2>
+        <div class="cabecalho-secao">
+          <h2 class="titulo-secao" id="destaques-titulo">À venda agora</h2>
+          <span id="destaques-qtd"></span>
+        </div>
         <div id="destaques"><p class="carregando">Carregando imóveis…</p></div>
       </div>
     </section>
 
-    <section class="secao" id="quem-somos">
-      <div class="conteudo quem-somos">
-        <img src="imagens/icone-512.png" alt="" class="quem-somos-simbolo" loading="lazy">
+    <section class="secao secao-borda">
+      <div class="conteudo">
+        <h2 class="titulo-secao">Procure por tipo</h2>
+        <nav class="tipos" id="categorias" aria-label="Tipos de imóvel"></nav>
+      </div>
+    </section>
+
+    <section class="vender">
+      <div class="conteudo vender-in">
         <div>
-          <p class="sobretitulo">Quem somos</p>
-          <h2 class="titulo-secao" id="quem-somos-titulo">&nbsp;</h2>
-          <div id="quem-somos-texto"></div>
-          <a class="botao botao-whats" id="quem-somos-whats" href="#" target="_blank" rel="noopener">Converse com a gente</a>
+          <h2 class="titulo-secao" id="vender-titulo">&nbsp;</h2>
+          <p class="vender-texto" id="vender-texto"></p>
         </div>
+        <a class="botao botao-destaque" id="vender-whats" href="#" target="_blank" rel="noopener">Quero anunciar meu imóvel</a>
+      </div>
+    </section>
+
+    <section class="secao" id="quem-somos">
+      <div class="conteudo sobre">
+        <h2 class="titulo-secao" id="quem-somos-titulo">&nbsp;</h2>
+        <div class="sobre-texto" id="quem-somos-texto"></div>
       </div>
     </section>
   </main>

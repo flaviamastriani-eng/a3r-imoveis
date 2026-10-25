@@ -101,10 +101,25 @@ function linkWhats(site, mensagem) {
 }
 
 function mensagemAnuncio(imovel) {
-  return `Olá! Vi o anúncio "${imovel.titulo}" no site e gostaria de mais informações.\n${location.href}`;
+  const codigo = referencia(imovel) ? ` (${referencia(imovel)})` : "";
+  return `Olá! Vi o anúncio "${imovel.titulo}"${codigo} no site e gostaria de mais informações.\n${location.href}`;
+}
+
+function mensagemVender() {
+  return "Olá! Tenho um imóvel e gostaria de anunciar com a A3R Imóveis.";
 }
 
 /* ---------- Pedaços comuns ---------- */
+
+// Aceita "012", "Ref. 012" ou "ref 012" no painel e sempre mostra "Ref. 012"
+function referencia(im) {
+  const codigo = String(im.codigo || "").replace(/^\s*ref\.?\s*/i, "").trim();
+  return codigo ? `Ref. ${codigo}` : "";
+}
+
+function dinheiro(valor) {
+  return Number(valor).toLocaleString("pt-BR", { style: "currency", currency: "BRL", maximumFractionDigits: 0 });
+}
 
 function resumo(im) {
   const itens = [];
@@ -126,13 +141,11 @@ function cartao(im) {
     <a class="cartao" href="imovel.html?id=${encodeURIComponent(im.id)}">
       <div class="cartao-foto">
         ${foto ? `<img src="${esc(foto)}" alt="${esc(im.titulo)}" loading="lazy">` : `<div class="sem-foto">Foto em breve</div>`}
-        <span class="selo">${esc(im.tipo)}</span>
       </div>
       <div class="cartao-corpo">
-        <p class="cartao-bairro">${icone("local")}${esc(im.bairro)}</p>
+        <p class="cartao-preco">${preco(im.preco)}${referencia(im) ? `<span class="cartao-ref">${esc(referencia(im))}</span>` : ""}</p>
         <h3>${esc(im.titulo)}</h3>
-        <p class="cartao-resumo">${resumo(im).map(esc).join(" · ")}</p>
-        <p class="cartao-preco">${preco(im.preco)}</p>
+        <p class="cartao-info">${[im.bairro, ...resumo(im)].filter(Boolean).map(esc).join(" · ")}</p>
       </div>
     </a>`;
 }
@@ -154,11 +167,16 @@ function montarRodape(site) {
   }
   if (site.email) contatos.push(`<a href="mailto:${esc(site.email)}">${icone("email")}${esc(site.email)}</a>`);
 
+  const creci = site.creci ? ` · CRECI ${esc(site.creci)}` : "";
+
   rodape.innerHTML = `
     <div class="rodape-in">
-      <img class="rodape-logo" src="imagens/logo-vertical-recortada.png" alt="A3R Imóveis" loading="lazy">
       <div>
-        <h2>Fale com a gente</h2>
+        <img class="rodape-logo" src="imagens/logo-nova/logo-horizontal-branca.svg" alt="A3R Imóveis" loading="lazy">
+        <p>Casas, apartamentos e terrenos em ${esc(site.cidade)}.</p>
+      </div>
+      <div>
+        <h2>Contato</h2>
         <div class="rodape-contatos">${contatos.join("")}</div>
       </div>
       <div>
@@ -169,7 +187,17 @@ function montarRodape(site) {
         </nav>
       </div>
     </div>
-    <p class="rodape-final">A3R Imóveis · ${esc(site.cidade)} · CRECI ${esc(site.creci)} · © ${new Date().getFullYear()}</p>`;
+    <p class="rodape-final">A3R Imóveis · ${esc(site.cidade)}${creci} · © ${new Date().getFullYear()}</p>`;
+}
+
+function montarFaixa(site) {
+  const faixa = document.getElementById("faixa");
+  if (!faixa) return;
+  faixa.innerHTML = `
+    <div class="faixa-in">
+      <span>${esc(site.cidade)}</span>
+      <a href="${linkWhats(site)}" target="_blank" rel="noopener">${icone("whats")}WhatsApp ${esc(site.whatsapp)}</a>
+    </div>`;
 }
 
 function montarBotaoWhats(site, mensagem) {
@@ -189,26 +217,34 @@ function erro(alvo, e) {
 function paginaInicio({ site, aVenda }) {
   document.getElementById("hero-titulo").textContent = site.titulo_inicio;
   document.getElementById("hero-texto").textContent = site.texto_inicio;
-  document.getElementById("hero-whats").href = linkWhats(site);
 
   document.getElementById("categorias").innerHTML = Object.entries(TIPOS)
     .map(([tipo, t]) => {
       const qtd = aVenda.filter((im) => im.tipo === tipo).length;
-      return `<a class="categoria categoria-${slug(tipo)}" href="${t.pagina}">
-        <span class="categoria-nome">${t.plural}</span>
-        <span class="categoria-qtd">${qtd ? plural(qtd, "imóvel", "imóveis") : "Em breve"}</span>
-        ${icone("seta")}
+      return `<a class="tipo" href="${t.pagina}">
+        <span class="tipo-nome">${t.plural}</span>
+        <span class="tipo-qtd">${qtd ? plural(qtd, "à venda", "à venda") : "Em breve"}${icone("seta")}</span>
       </a>`;
     })
     .join("");
 
-  let destaques = aVenda.filter((im) => im.destaque);
-  if (!destaques.length) destaques = aVenda;
-  document.getElementById("destaques").innerHTML = grade(destaques.slice(0, 6), "Novos imóveis chegando em breve.");
+  // Destaques primeiro, depois os demais, até 6 na página inicial
+  const ordenados = [...aVenda.filter((im) => im.destaque), ...aVenda.filter((im) => !im.destaque)];
+
+  // Foto do topo: a escolhida no painel; se vazia, a capa do primeiro imóvel em destaque
+  const fotoTopo = caminhoFoto(site.foto_topo) || ordenados.find((im) => im.fotos.length)?.fotos[0];
+  if (fotoTopo) document.getElementById("abertura-foto").style.backgroundImage = `url("${encodeURI(fotoTopo)}")`;
+  document.getElementById("destaques-qtd").textContent = aVenda.length ? plural(aVenda.length, "imóvel", "imóveis") : "";
+  document.getElementById("destaques").innerHTML = grade(ordenados.slice(0, 6), "Novos imóveis em breve. Chame a gente no WhatsApp para saber das novidades.");
 
   document.getElementById("quem-somos-titulo").textContent = site.quem_somos_titulo;
   document.getElementById("quem-somos-texto").innerHTML = paragrafos(site.quem_somos);
-  document.getElementById("quem-somos-whats").href = linkWhats(site);
+
+  // "Quer vender seu imóvel?" — textos do painel, com um padrão enquanto estiverem vazios
+  document.getElementById("vender-titulo").textContent = site.vender_titulo || "Quer vender seu imóvel?";
+  document.getElementById("vender-texto").textContent = site.vender_texto ||
+    "Casa, apartamento ou terreno em Barretos e região. Cuidamos da divulgação, das visitas e da negociação até a escritura.";
+  document.getElementById("vender-whats").href = linkWhats(site, mensagemVender());
 
   // Os anúncios carregam depois da página; refaz o pulo para "Quem somos" quando o link pede
   if (location.hash) document.querySelector(location.hash)?.scrollIntoView();
@@ -231,17 +267,24 @@ function paginaLista({ aVenda }, tipo) {
 /* ---------- Página de um anúncio ---------- */
 
 function caracteristicas(im) {
-  const itens = [];
-  if (im.metragem) itens.push(["area", `${numero(im.metragem)} m²`, "Metragem"]);
+  const rotuloArea = { Casa: "Área construída", Apartamento: "Área útil", Terreno: "Área total" }[im.tipo] || "Metragem";
+  const sim = (valor) => (valor ? "Sim" : "");
+  const itens = [["Bairro", im.bairro]];
+  if (im.metragem) itens.push([rotuloArea, `${numero(im.metragem)} m²`]);
+  if (im.tipo === "Casa" && im.area_terreno) itens.push(["Área do terreno", `${numero(im.area_terreno)} m²`]);
   if (im.tipo === "Terreno") {
-    if (im.frente && im.fundo) itens.push(["medida", `${numero(im.frente)} x ${numero(im.fundo)} m`, "Frente x fundo"]);
+    if (im.frente && im.fundo) itens.push(["Frente x fundo", `${numero(im.frente)} x ${numero(im.fundo)} m`]);
   } else {
-    if (im.quartos) itens.push(["quarto", im.quartos, Number(im.quartos) === 1 ? "Quarto" : "Quartos"]);
-    if (im.banheiros) itens.push(["banheiro", im.banheiros, Number(im.banheiros) === 1 ? "Banheiro" : "Banheiros"]);
-    if (im.vagas) itens.push(["vaga", im.vagas, Number(im.vagas) === 1 ? "Vaga" : "Vagas"]);
+    if (im.quartos) itens.push(["Quartos", im.suites ? `${im.quartos} (${plural(im.suites, "suíte", "suítes")})` : im.quartos]);
+    if (im.banheiros) itens.push(["Banheiros", im.banheiros]);
+    if (im.vagas) itens.push(["Vagas de garagem", im.vagas]);
   }
+  if (im.condominio) itens.push(["Condomínio", `${dinheiro(im.condominio)} por mês`]);
+  if (im.iptu) itens.push(["IPTU", `${dinheiro(im.iptu)} por ano`]);
+  itens.push(["Aceita financiamento", sim(im.financiamento)], ["Aceita FGTS", sim(im.fgts)]);
   return itens
-    .map(([ic, valor, rotulo]) => `<li>${icone(ic)}<strong>${esc(valor)}</strong><span>${rotulo}</span></li>`)
+    .filter(([, valor]) => valor)
+    .map(([rotulo, valor]) => `<div><dt>${rotulo}</dt><dd>${esc(valor)}</dd></div>`)
     .join("");
 }
 
@@ -332,11 +375,10 @@ function paginaImovel({ site, imoveis, aVenda }) {
     <div class="anuncio-grade">
       <div class="anuncio-fotos">${galeria(im)}</div>
       <div class="anuncio-info">
-        <span class="selo selo-claro">${esc(im.tipo)}</span>
+        <p class="anuncio-tipo">${[im.tipo, [im.bairro, im.cidade].filter(Boolean).join(", "), referencia(im)].filter(Boolean).map(esc).join(" · ")}</p>
         <h1>${esc(im.titulo)}</h1>
-        <p class="anuncio-local">${icone("local")}${esc(im.bairro)}${im.cidade ? ", " + esc(im.cidade) : ""}</p>
         <p class="anuncio-preco">${preco(im.preco)}</p>
-        <ul class="caracteristicas">${caracteristicas(im)}</ul>
+        <dl class="ficha">${caracteristicas(im)}</dl>
         <div class="anuncio-acoes">
           <a class="botao botao-whats" href="${whats}" target="_blank" rel="noopener">${icone("whats")}Quero mais informações</a>
           <button class="botao botao-contorno" id="compartilhar">${icone("compartilhar")}Compartilhar</button>
@@ -375,6 +417,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const principal = document.querySelector("main");
   try {
     const dados = await carregarDados();
+    montarFaixa(dados.site);
     montarRodape(dados.site);
     if (pagina === "inicio") paginaInicio(dados);
     if (pagina === "lista") paginaLista(dados, document.body.dataset.tipo);
