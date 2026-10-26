@@ -243,7 +243,7 @@ function paginaInicio({ site, aVenda }) {
   // "Quer vender seu imóvel?" — textos do painel, com um padrão enquanto estiverem vazios
   document.getElementById("vender-titulo").textContent = site.vender_titulo || "Quer vender seu imóvel?";
   document.getElementById("vender-texto").textContent = site.vender_texto ||
-    "Casa, apartamento ou terreno em Barretos e região. Cuidamos da divulgação, das visitas e da negociação até a escritura.";
+    "Casa, apartamento ou terreno em Barretos e região. Cuidamos da divulgação, das visitas e da negociação.";
   document.getElementById("vender-whats").href = linkWhats(site, mensagemVender());
 
   // Os anúncios carregam depois da página; refaz o pulo para "Quem somos" quando o link pede
